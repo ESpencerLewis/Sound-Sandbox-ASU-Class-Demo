@@ -1,0 +1,8 @@
+void OnTriggerEnter(Collider other) { if (other.CompareTag(playerTag)) playerInside = true; }
+void OnTriggerExit(Collider other)  { if (other.CompareTag(playerTag)) playerInside = false; }
+void Update()
+{
+    float rate = playerInside ? risePerSecond : -fallPerSecond;
+    adaptive.AddIntensity(rate * Time.deltaTime);
+}
+// Stretch: also use Mathf.SmoothStep so the climb eases in, or add a second zone that drops intensity instantly.
