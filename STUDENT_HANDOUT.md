@@ -112,7 +112,19 @@ a copy darkened in an audio editor. A script crossfades between them when a wall
 7. Press **Play**, click the button, and approach the blue cube from the south, where the inner wall is in the way: you hear the muffled version.
    Walk around the end of the wall to get a clear line, and it crossfades to the clean version.
 
-## Step 12 (optional). A mixer for your volumes
+## Step 12. Build for the Web and play it in a browser
+A Web build runs as a page in the browser, with no Unity needed. Remember that on Web only **volume** works (no reverb or filters), and the browser may wait for a click before it plays sound.
+1. Save the scene (**Command-S**, Windows: Ctrl-S).
+2. Go to **File, Build Profiles**. Click **Web** in the platform list, then **Switch Platform**. (If Web is missing, the **Web Build Support** module is not installed: add it in Unity Hub, Installs, the gear icon, Add modules.)
+3. Check that **Greybox** is in the **Scenes** list and **ticked**. If it is not, click **Add Open Scenes**.
+4. Click **Build And Run**. Make a new folder called `WebBuild` **outside** your project folder, and choose it. The first build can take several minutes.
+5. When it finishes, Unity opens the game in your browser. Click the game, then click **Click to start**. Walk with W, S, A, D, Q and E, and check each sound:
+   ambient, footsteps, Danger getting louder near the red cube, Pick Up, Win, and the Dialogue muffling behind the wall.
+   Write down anything that sounds different from the Editor. That is the lesson of this step.
+6. **To share it on itch.io:** zip the **contents** of the `WebBuild` folder so `index.html` is at the top of the zip, not inside another folder. On itch.io choose **New project**, kind **HTML**, upload the zip, and tick **This file will be played in the browser**.
+   If it will not load there, rebuild with **Compression Format: Disabled** (Edit, Project Settings, Player, Publishing Settings) and zip it again.
+
+## Step 13 (optional). A mixer for your volumes
 A **mixer** groups your sounds so one fader controls many sources, and lets a script or a volume menu change them while the game runs.
 Mixer **volume works on Web**; mixer effects such as reverb and low-pass do not.
 1. In the Project window, right-click `Assets`, **Create, Audio, Audio Mixer**. Name it **GameMixer**. Double-click it to open the Audio Mixer window.
@@ -128,13 +140,13 @@ Mixer **volume works on Web**; mixer effects such as reverb and low-pass do not.
 7. Press **Play**. Three sliders appear at the top left of the Game window and change each group's volume.
 Mixers work in decibels, so the script converts a 0 to 1 slider value with `20 * log10(value)`.
 
-<!-- ELLE: Step 12 is written from how Unity's mixer works, but not yet tested in a Web build. Test before covering it in class. -->
+<!-- ELLE: Step 13 is written from how Unity's mixer works, but not yet tested in a Web build. Test before covering it in class. -->
 
 ## Bonus exercise (optional): make the music respond to a zone
 For students who finish early. In the `Sandbox` folder, `StudentExercise.cs` has three **TODOs** for you to fill in, so that standing inside a "Tense" zone makes an **intensity** value rise, and leaving it lets it fall back.
 Its finished version is `StudentExercise_Solution.txt` in the same folder: look only after you have tried.
 What you need first:
-- The **mixer from Step 12**, with a group for the layer you want to bring in, and its volume exposed (for example `TensionVol`).
+- The **mixer from Step 13**, with a group for the layer you want to bring in, and its volume exposed (for example `TensionVol`).
 - An extra **looping layer** of your own, the same length and tempo as the Ambient loop, set as a 2D sound (**Spatial Blend 0**) and routed to that group.
 - An empty object with the provided `AdaptiveMixer.cs`. Set **Mixer**, add one **Layer** with your exposed name, and edit its curve so the layer is silent at low intensity and loud at high intensity. Press Play and drag the slider to hear it.
 - A cube named **Tense** with **Is Trigger** ticked and the `StudentExercise` script. Drag the AdaptiveMixer object into its **Adaptive** slot.
