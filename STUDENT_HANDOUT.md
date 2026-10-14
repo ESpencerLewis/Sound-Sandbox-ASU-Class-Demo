@@ -169,7 +169,7 @@ A looping heartbeat is provided: `Heartbeat.wav` in `For-Your-Own-Game/Audio` (a
    Then walk up to the red cube: health drains. Walk away and it slowly recovers, and the yellow cube heals you when you touch it.
 9. **Tune it:** edit the **Heartbeat Volume** curve (X is damage from 0 to 1, Y is volume), the pitch, and **Lowest Level** until it feels right.
 
-<!-- ELLE: this section is written but not yet tested in Play mode or a Web build. The scripts compile in 6000.0.64f1. -->
+<!-- ELLE: the logic of this section passed an automated play-mode test in Unity 6000.0.64f1 (volumes, pitch, ducking, drain, heal). Not yet heard by ear and not tested in a Web build. -->
 
 ## Using this in your own game
 The sounds are ordinary WAV files and the scripts only use AudioSources, so they can go into your own **3D** project: copy the scripts into your `Assets/Scripts`,
