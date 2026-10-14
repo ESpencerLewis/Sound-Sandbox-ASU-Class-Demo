@@ -112,6 +112,24 @@ a copy darkened in an audio editor. A script crossfades between them when a wall
 7. Press **Play**, click the button, and approach the blue cube from the south, where the inner wall is in the way: you hear the muffled version.
    Walk around the end of the wall to get a clear line, and it crossfades to the clean version.
 
+## Step 12 (optional). A mixer for your volumes
+A **mixer** groups your sounds so one fader controls many sources, and lets a script or a volume menu change them while the game runs.
+Mixer **volume works on Web**; mixer effects such as reverb and low-pass do not.
+1. In the Project window, right-click `Assets`, **Create, Audio, Audio Mixer**. Name it **GameMixer**. Double-click it to open the Audio Mixer window.
+2. In the **Groups** section, click the **+**, **Add child group to Master**. Make three: **Music**, **Dialogue**, **Effects**.
+3. Route each Audio Source to a group: select the source, and drag the group into its **Output** slot (or pick it from the Output menu).
+   Ambient and Danger Sound go to **Music**. Dialogue Clean and Dialogue Muffled go to **Dialogue**. Footsteps, Pick Up and Win go to **Effects**.
+   The Footstep Player, Pick Up and Win scripts add their own Audio Source while the game runs. To route them, first add an **Audio Source** component yourself
+   (untick **Play On Awake**) on the Player, PICK UP and WIN, and set its Output.
+4. **Expose each volume:** click a group, right-click **Volume** in the Inspector, **Expose 'Volume (of Music)' to script**. Do this for all three groups.
+5. At the top right of the mixer window click **Exposed Parameters**, and rename them **exactly**: `MusicVol`, `DialogueVol`, `EffectsVol` (no spaces).
+6. Put the provided `MixerVolumeSliders.cs` in `Assets/Scripts`. Create an empty object called **Sliders**, add **Mixer Volume Sliders**,
+   drag **GameMixer** into **Mixer**, set **Channels** to size **3**, and fill in each one: Label `Music` / Param `MusicVol`, Label `Dialogue` / Param `DialogueVol`, Label `Effects` / Param `EffectsVol`.
+7. Press **Play**. Three sliders appear at the top left of the Game window and change each group's volume.
+Mixers work in decibels, so the script converts a 0 to 1 slider value with `20 * log10(value)`.
+
+<!-- ELLE: Step 12 is written from how Unity's mixer works, but not yet tested in a Web build. Test before covering it in class. -->
+
 ## Using this in your own game
 The sounds are ordinary WAV files and the scripts only use AudioSources, so they can go into your own **3D** project: copy the scripts into your `Assets/Scripts`,
 import the audio with **Load Type: Compressed In Memory**, wait for the Console to show no red errors, then repeat the steps above on your own objects.
@@ -124,6 +142,28 @@ Check these first:
 6. If your game already uses FMOD, Wwise or its own audio manager, these scripts will play alongside it, not inside it.
 
 **Working on a 2D game?** Use the separate **STUDENT_HANDOUT_2D.md** and the scripts in the **DemoScripts_2D** folder.
+
+## Free music and sounds for your own game
+**Check the license of every sound you use**, and keep a note of where each one came from.
+- **CC0**: free to use with no credit required.
+- **CC BY**: free to use, but you must credit the creator.
+- **CC BY-NC**: free, but not in anything you sell.
+
+**Sound libraries**
+- [Freesound](https://freesound.org): a huge library of sound effects and recordings. A free account is needed to download. Each sound has its own license (CC0, CC BY or CC BY-NC), so read it on the sound's page.
+- [Kenney audio packs](https://kenney.nl/assets/category:Audio): impact, interface, sci-fi, RPG and digital sounds. The Impact Sounds pack is listed as CC0 and free; check each pack's page.
+- [OpenGameArt](https://opengameart.org): free music and sounds, with the license listed on each page. For example, [Short Loops Background Music Pack](https://opengameart.org/content/short-loops-background-music-pack) (CC0, 1.5 MB) and [Residual World game audio samples](https://opengameart.org/content/residual-world-4-game-audio-samples-cc0) (CC0, 5 MB).
+
+**Music with layers (stems) that play together, good for adaptive music**
+- [Lurking Layers Music Pack](https://imperial-dawn-audio.itch.io/lurking-layers): CC0, three tracks with five or more layers each at one shared tempo (571 MB).
+- [Eerie Space Music](https://foozlecc.itch.io/eerie-space-music): CC0, two songs with stems (449 MB).
+- [Free 8-bit Music Asset Pack](https://danzmacabre.itch.io/free-8-bit-music-asset-pack): CC BY 4.0, three songs with stems (110 MB).
+- More free music on itch.io: [itch.io free game music assets](https://itch.io/game-assets/free/tag-music).
+
+**Learning more**
+- [FMOD For Unity - Integration Tutorial](https://www.youtube.com/watch?v=9ehp1aqtDuI) (video): the next step, adding FMOD to a Unity project.
+
+**Tips for loops:** loops that play together must be the **same length** and start on a bar line, so they stay in time. Export them as WAV, import with **Compressed In Memory**, and listen to the loop point.
 
 <!-- NEXT STEPS TO WRITE (for Elle, delete before handing out):
  7b (pick up, next): 3D sound, Linear rolloff, distance fade
