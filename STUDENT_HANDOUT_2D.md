@@ -1,5 +1,7 @@
 # Sound in Unity: handout for 2D games (DRAFT, not yet tested in a 2D project)
 
+**Try the finished demo in your browser first:** https://synapsody.itch.io/sound-sandbox (click the game, then **Click to start**).
+
 For students whose own game is **2D**. The main handout (STUDENT_HANDOUT.md) is the 3D class demo; read its steps first, because the sounds and most of the scripts are the same.
 You are given the audio files, the main **Sandbox** and **DemoScripts** scripts, and the two 2D scripts in **DemoScripts_2D**.
 Unity **6000.0.64f1**. Everything here works with volume, placement and plain sound files, so it also works on Web.

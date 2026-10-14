@@ -1,5 +1,7 @@
 # Sound in Unity: student handout (DRAFT, grows as the demo is built)
 
+**Try the finished demo in your browser first:** https://synapsody.itch.io/sound-sandbox (click the game, then **Click to start**).
+
 Unity **6000.0.64f1** (the lab version). Built-in Unity audio only. The game builds to **Web**, where only volume works
 (no reverb or filters), so every effect here is done with volume, placement and pre-made sound files.
 You are given: the **Sandbox scripts**, the **audio files**, and the **Greybox builder** script. Follow the steps in order.
