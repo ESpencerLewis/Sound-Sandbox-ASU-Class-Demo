@@ -15,7 +15,7 @@ namespace Synapsody.Sandbox
         public AudioSource heartbeat;
         [Tooltip("X: damage (0 = full health, 1 = no health). Y: heartbeat volume.")]
         public AnimationCurve heartbeatVolume = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.3f, 0f), new Keyframe(1f, 1f));
-        public float highestPitch = 1.4f;
+        public float highestPitch = 2f;
 
         [Header("Duck the other sounds")]
         public AudioSource[] duckSources;

@@ -155,14 +155,14 @@ Then complete the three TODOs, press Play and walk into the cube.
 ## Bonus: health, a heartbeat, and ducking the other sounds
 Tie sound to a character's health. As health falls, a heartbeat gets louder and faster, and the other sounds get quieter. Standing near the DANGER cube drains health, and the PICK UP cube heals a little.
 It only changes **volume and pitch**, so it works on Web. (A low-pass filter would muffle the other sounds more realistically, but it does not work on Web, so here they are turned down instead.)
-You need a looping heartbeat sound. Import it as **Heartbeat** with **Compressed In Memory**.
+A looping heartbeat is provided: `Heartbeat.wav` in `For-Your-Own-Game/Audio` (about 40 beats a minute, four beats, loops cleanly). Import it with **Compressed In Memory**.
 1. Put the provided `Health.cs`, `HealthAudio.cs`, `HealthDrainNear.cs` and `HealOnTrigger.cs` in `Assets/Scripts`. Replace `OcclusionCrossfade.cs` with the updated copy (it has a new **Master Level** setting). Wait for the spinner; no red errors.
 2. In the **Hierarchy**, **Create Empty**, name it **HealthSystem**, and **Add Component, Health**. A health slider appears at the top right when you press Play.
 3. Right-click **HealthSystem**, **Create Empty**, name the child **Heartbeat Sound**. **Add Component, Audio Source**: drag **Heartbeat** into **Audio Resource**, **Play On Awake ON**, **Loop ON**, **Spatial Blend 0**, **Volume 1**.
 4. Click **LevelSound**. In **Click To Start**, make **Sources** one bigger and drag **Heartbeat Sound** into the new slot.
 5. Click **HealthSystem**, **Add Component, Health Audio**. Fill in: **Health** = HealthSystem, **Heartbeat** = Heartbeat Sound.
    Under **Duck Sources** set **Size** to **2** and drag in **Ambient (will play everywhere)** and **Danger Sound**.
-   Under **Duck Occlusion** set **Size** to **1** and drag in the **DIALOGUE** cube. Leave **Lowest Level** at 0.3 and **Highest Pitch** at 1.4.
+   Under **Duck Occlusion** set **Size** to **1** and drag in the **DIALOGUE** cube. Leave **Lowest Level** at 0.3 and **Highest Pitch** at 2.
 6. Click the **DANGER** cube. **Add Component, Health Drain Near**. Drag **HealthSystem** into **Health**. Leave **Radius 6** and **Drain Per Second 0.1**.
 7. Click the **PICK UP** cube. **Add Component, Heal On Trigger**. Drag **HealthSystem** into **Health**. Leave **Amount 0.3**.
 8. Press **Play**, click **Click to start**, and **drag the Health slider down** to hear it: the heartbeat comes in, speeds up, and the ambient, danger and dialogue sounds get quieter.
