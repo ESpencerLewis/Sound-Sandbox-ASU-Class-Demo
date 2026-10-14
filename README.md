@@ -3,6 +3,8 @@
 A guest lecture for ASU AME 494 (Wed Oct 14, 2026), by Elle Spencer Lewis.
 Unity **6000.0.64f1**. Built-in Unity audio only, so it also works in **Web** builds (where only volume works: no reverb or filters).
 
+**Play the finished demo in your browser:** https://synapsody.itch.io/sound-sandbox (click the game, then **Click to start**; W/S move, A/D sideways, Q/E turn).
+
 ## What is here
 | Folder | What it is |
 |---|---|
