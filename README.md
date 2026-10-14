@@ -10,6 +10,7 @@ Unity **6000.0.64f1**. Built-in Unity audio only, so it also works in **Web** bu
 | `SoundSandbox-Finished` | The completed demo, with all the sounds working. Open it to compare with yours. |
 | `For-Your-Own-Game` | Just the scripts and the audio files, to copy into your own project. |
 | `STUDENT_HANDOUT.md` | The step-by-step for the 3D demo. |
+| `SOLUTIONS_AND_TROUBLESHOOTING.md` | What each object should look like, and fixes for common problems. |
 | `STUDENT_HANDOUT_2D.md` | The same ideas for a 2D game (draft, not yet tested in a 2D project). |
 
 ## How to open a project
