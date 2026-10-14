@@ -130,6 +130,16 @@ Mixers work in decibels, so the script converts a 0 to 1 slider value with `20 *
 
 <!-- ELLE: Step 12 is written from how Unity's mixer works, but not yet tested in a Web build. Test before covering it in class. -->
 
+## Bonus exercise (optional): make the music respond to a zone
+For students who finish early. In the `Sandbox` folder, `StudentExercise.cs` has three **TODOs** for you to fill in, so that standing inside a "Tense" zone makes an **intensity** value rise, and leaving it lets it fall back.
+Its finished version is `StudentExercise_Solution.txt` in the same folder: look only after you have tried.
+What you need first:
+- The **mixer from Step 12**, with a group for the layer you want to bring in, and its volume exposed (for example `TensionVol`).
+- An extra **looping layer** of your own, the same length and tempo as the Ambient loop, set as a 2D sound (**Spatial Blend 0**) and routed to that group.
+- An empty object with the provided `AdaptiveMixer.cs`. Set **Mixer**, add one **Layer** with your exposed name, and edit its curve so the layer is silent at low intensity and loud at high intensity. Press Play and drag the slider to hear it.
+- A cube named **Tense** with **Is Trigger** ticked and the `StudentExercise` script. Drag the AdaptiveMixer object into its **Adaptive** slot.
+Then complete the three TODOs, press Play and walk into the cube.
+
 ## Using this in your own game
 The sounds are ordinary WAV files and the scripts only use AudioSources, so they can go into your own **3D** project: copy the scripts into your `Assets/Scripts`,
 import the audio with **Load Type: Compressed In Memory**, wait for the Console to show no red errors, then repeat the steps above on your own objects.
