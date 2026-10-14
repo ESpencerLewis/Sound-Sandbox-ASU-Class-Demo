@@ -18,6 +18,8 @@ namespace Synapsody.Sandbox
         public LayerMask blockers = ~0;
         [Range(0f, 1f)] public float blockedLevel = 0.8f;
         public float seconds = 0.3f;
+        [Tooltip("Overall level for both copies. Other scripts (for example Health Audio) can lower it.")]
+        [Range(0f, 1f)] public float masterLevel = 1f;
 
         float cleanBase, muffledBase, amount; // amount: 0 = open, 1 = blocked
 
@@ -41,7 +43,7 @@ namespace Synapsody.Sandbox
             amount = Mathf.Lerp(amount, blocked ? 1f : 0f, k);
 
             // Equal-power crossfade so the level does not dip in the middle
-            float level = Mathf.Lerp(1f, blockedLevel, amount);
+            float level = Mathf.Lerp(1f, blockedLevel, amount) * masterLevel;
             clean.volume = cleanBase * Mathf.Cos(amount * Mathf.PI * 0.5f) * level;
             muffled.volume = muffledBase * Mathf.Sin(amount * Mathf.PI * 0.5f) * level;
         }
